@@ -172,18 +172,23 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeOrder();});
 form.addEventListener('submit', function(e){
   e.preventDefault();
 
+  // First make sure every required field is filled on the website.
   if(!form.checkValidity()){
     form.reportValidity();
     return;
   }
 
-  const p = product.value || 'নির্দিষ্ট করা হয়নি';
-  const q = qty.value || '1';
-  const name = (form.querySelector('[name="name"]') || {}).value || '';
-  const phone = (form.querySelector('[name="phone"]') || {}).value || '';
-  const address = (form.querySelector('[name="address"]') || {}).value || '';
-  const payment = (form.querySelector('input[name="payment"]:checked') || {}).value || 'নির্দিষ্ট করা হয়নি';
-  const note = (form.querySelector('[name="note"]') || {}).value || 'কোনো অতিরিক্ত তথ্য নেই';
+  // Read the ACTUAL values from the website form.
+  // The previous version looked for English field names, while this form
+  // uses Bengali names. We now read by element ID, so the typed data is kept.
+  const p = document.getElementById('product').value || 'নির্দিষ্ট করা হয়নি';
+  const q = document.getElementById('qty').value || '1';
+  const name = document.getElementById('name').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const address = document.getElementById('address').value.trim();
+  const paymentEl = document.querySelector('input[name="পেমেন্ট পদ্ধতি"]:checked');
+  const payment = paymentEl ? paymentEl.value : 'নির্দিষ্ট করা হয়নি';
+  const note = document.getElementById('note').value.trim() || 'কোনো অতিরিক্ত তথ্য নেই';
 
   const message =
 `🛍️ *Ayra Cosmetics – নতুন অর্ডার*
@@ -196,17 +201,25 @@ form.addEventListener('submit', function(e){
 💳 *পেমেন্ট পদ্ধতি:* ${payment}
 📝 *অতিরিক্ত তথ্য:* ${note}
 
-✅ অর্ডারটি কনফার্ম করার জন্য WhatsApp-এ পাঠানো হলো।`;
+💰 *মোট মূল্য:* পণ্যভেদে মূল্য নিশ্চিত করা হবে।
 
+✅ ওয়েবসাইট থেকে অর্ডার করা হয়েছে।`;
+
+  // Bangladesh WhatsApp number in international format (no +, no spaces).
   const whatsappNumber = '8801609484590';
   const whatsappUrl = 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(message);
 
-  // Open WhatsApp in a new tab/window. On mobile this normally opens the WhatsApp app.
-  window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+  // Navigate directly to WhatsApp with ALL form information already filled
+  // into the message box. On a phone with WhatsApp installed, it will open
+  // the WhatsApp app; otherwise WhatsApp Web can open.
+  window.location.href = whatsappUrl;
 
-  // Show a polished success state inside the website.
-  document.getElementById('orderFormWrap').style.display='none';
-  document.getElementById('successBox').classList.add('show');
+  // Also prepare the website's success screen. If WhatsApp opens immediately,
+  // the user will see this when returning to the website.
+  setTimeout(function(){
+    document.getElementById('orderFormWrap').style.display='none';
+    document.getElementById('successBox').classList.add('show');
+  }, 1200);
 });
 
 </script>
