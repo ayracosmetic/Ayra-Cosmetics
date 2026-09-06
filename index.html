@@ -19,7 +19,13 @@ header{background:linear-gradient(135deg,#fff0f5,#f8c5d7);padding:22px 6%;displa
 .order{display:inline-block;background:#25a95a;color:white;padding:9px 16px;border-radius:20px;text-decoration:none}
 .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:15px}.feature{padding:20px;background:#fff;border-radius:16px;text-align:center;border:1px solid #f1d5df}
 footer{background:#351d28;color:#fff;padding:35px 6%;text-align:center}.small{opacity:.85;font-size:14px}
-</style>
+
+.orderbox{display:none;position:fixed;inset:0;background:#0008;z-index:20;padding:20px;overflow:auto}
+.orderpanel{max-width:560px;margin:30px auto;background:#fff;border-radius:22px;padding:25px}
+.orderpanel h2{color:#a8174e;margin-top:0}.close{float:right;border:0;background:#eee;border-radius:50%;width:34px;height:34px;font-size:20px}
+.formrow{margin:12px 0}.formrow label{display:block;font-weight:700;margin-bottom:6px}.formrow input,.formrow select,.formrow textarea{width:100%;padding:11px;border:1px solid #e3c8d3;border-radius:10px;font-size:15px}
+.payments{display:grid;grid-template-columns:1fr 1fr;gap:8px}.payments label{border:1px solid #e3c8d3;padding:11px;border-radius:10px;cursor:pointer}.submit{width:100%;border:0;cursor:pointer;margin-top:10px}
+
 </head>
 <body>
 <header>
@@ -37,12 +43,12 @@ footer{background:#351d28;color:#fff;padding:35px 6%;text-align:center}.small{op
 <section class="section" id="products">
 <h2>✨ আমাদের জনপ্রিয় পণ্য</h2>
 <div class="grid">
-<div class="card"><div class="icon">🫧</div><h3>ফেসওয়াশ</h3><p>দৈনন্দিন স্কিন কেয়ারের জন্য বিভিন্ন ধরনের ফেসওয়াশ।</p><div class="price">৳ 250–650</div><a class="order" href="tel:01609484590">অর্ডার করুন</a></div>
-<div class="card"><div class="icon">🧴</div><h3>ক্রিম</h3><p>ময়েশ্চারাইজার ও বিভিন্ন বিউটি ক্রিমের কালেকশন।</p><div class="price">৳ 300–900</div><a class="order" href="tel:01609484590">অর্ডার করুন</a></div>
-<div class="card"><div class="icon">💄</div><h3>লিপস্টিক</h3><p>বিভিন্ন শেডের লিপস্টিক ও লিপ কালার।</p><div class="price">৳ 180–750</div><a class="order" href="tel:01609484590">অর্ডার করুন</a></div>
-<div class="card"><div class="icon">🎁</div><h3>মেকআপ বক্স</h3><p>প্রয়োজনীয় মেকআপ আইটেমের সুন্দর কম্বো সেট।</p><div class="price">৳ 700–2,500</div><a class="order" href="tel:01609484590">অর্ডার করুন</a></div>
-<div class="card"><div class="icon">🌸</div><h3>পারফিউম</h3><p>বিভিন্ন সুগন্ধির কালেকশন।</p><div class="price">৳ 450–1,500</div><a class="order" href="tel:01609484590">অর্ডার করুন</a></div>
-<div class="card"><div class="icon">🪞</div><h3>অন্যান্য আইটেম</h3><p>বিউটি ও পার্সোনাল কেয়ারের আরও নানা পণ্য।</p><div class="price">৳ 100–1,200</div><a class="order" href="tel:01609484590">অর্ডার করুন</a></div>
+<div class="card"><div class="icon">🫧</div><h3>ফেসওয়াশ</h3><p>দৈনন্দিন স্কিন কেয়ারের জন্য বিভিন্ন ধরনের ফেসওয়াশ।</p><div class="price">৳ 250–650</div><button class="order" type="button" onclick="openOrder('ফেসওয়াশ','250–650')">অর্ডার করুন</button></div>
+<div class="card"><div class="icon">🧴</div><h3>ক্রিম</h3><p>ময়েশ্চারাইজার ও বিভিন্ন বিউটি ক্রিমের কালেকশন।</p><div class="price">৳ 300–900</div><button class="order" type="button" onclick="openOrder('ক্রিম','300–900')">অর্ডার করুন</button></div>
+<div class="card"><div class="icon">💄</div><h3>লিপস্টিক</h3><p>বিভিন্ন শেডের লিপস্টিক ও লিপ কালার।</p><div class="price">৳ 180–750</div><button class="order" type="button" onclick="openOrder('লিপস্টিক','180–750')">অর্ডার করুন</button></div>
+<div class="card"><div class="icon">🎁</div><h3>মেকআপ বক্স</h3><p>প্রয়োজনীয় মেকআপ আইটেমের সুন্দর কম্বো সেট।</p><div class="price">৳ 700–2,500</div><button class="order" type="button" onclick="openOrder('মেকআপ বক্স','700–2,500')">অর্ডার করুন</button></div>
+<div class="card"><div class="icon">🌸</div><h3>পারফিউম</h3><p>বিভিন্ন সুগন্ধির কালেকশন।</p><div class="price">৳ 450–1,500</div><button class="order" type="button" onclick="openOrder('পারফিউম','450–1,500')">অর্ডার করুন</button></div>
+<div class="card"><div class="icon">🪞</div><h3>অন্যান্য আইটেম</h3><p>বিউটি ও পার্সোনাল কেয়ারের আরও নানা পণ্য।</p><div class="price">৳ 100–1,200</div><button class="order" type="button" onclick="openOrder('অন্যান্য আইটেম','100–1,200')">অর্ডার করুন</button></div>
 </div>
 <p class="small" style="text-align:center;margin-top:22px">* উপরের দামগুলো নমুনা/আনুমানিক। আসল দাম পণ্যভেদে পরিবর্তিত হতে পারে।</p>
 </section>
@@ -67,10 +73,40 @@ footer{background:#351d28;color:#fff;padding:35px 6%;text-align:center}.small{op
 </div>
 </section>
 
+
+<div class="orderbox" id="orderBox"><div class="orderpanel">
+<button class="close" onclick="closeOrder()">×</button><h2>🛍️ অর্ডার করুন</h2>
+<form onsubmit="sendOrder(event)">
+<div class="formrow"><label>পণ্য</label><input id="product" readonly></div>
+<div class="formrow"><label>পরিমাণ</label><input id="qty" type="number" min="1" value="1" required></div>
+<div class="formrow"><label>আপনার নাম</label><input id="name" required placeholder="নাম লিখুন"></div>
+<div class="formrow"><label>মোবাইল নম্বর</label><input id="phone" type="tel" required placeholder="01XXXXXXXXX"></div>
+<div class="formrow"><label>ডেলিভারি ঠিকানা</label><textarea id="address" rows="3" required placeholder="বাড়ি/এলাকা/থানা/জেলা"></textarea></div>
+<div class="formrow"><label>পেমেন্ট পদ্ধতি</label><div class="payments">
+<label><input type="radio" name="pay" value="bKash" required> 🟢 bKash</label>
+<label><input type="radio" name="pay" value="Nagad"> 🟠 Nagad</label>
+<label><input type="radio" name="pay" value="Rocket"> 🔵 Rocket</label>
+<label><input type="radio" name="pay" value="Cash on Delivery"> 💵 Cash on Delivery</label>
+</div></div>
+<p class="small">অনলাইন পেমেন্ট বেছে নিলে অর্ডার পাঠানোর পর দোকানের পক্ষ থেকে পেমেন্ট নম্বর/নির্দেশনা জানানো হবে।</p>
+<button class="btn submit" type="submit">📲 অর্ডার পাঠান</button>
+</form></div></div>
 <footer>
 <strong>আয়রা কসমেটিকস</strong>
 <p>Be Beautiful, Be You 💗</p>
 <p class="small">ধর্মপুর চৌমনী, আদর্শ সদর, কুমিল্লা | 01609484590</p>
 </footer>
+
+<script>
+let selectedPrice='';
+function openOrder(product,price){document.getElementById('product').value=product;selectedPrice=price;document.getElementById('orderBox').style.display='block'}
+function closeOrder(){document.getElementById('orderBox').style.display='none'}
+function sendOrder(e){
+e.preventDefault();
+const product=document.getElementById('product').value,qty=document.getElementById('qty').value,name=document.getElementById('name').value,phone=document.getElementById('phone').value,address=document.getElementById('address').value,pay=document.querySelector('input[name="pay"]:checked').value;
+const msg=`🌸 *আয়রা কসমেটিকস - নতুন অর্ডার*%0A%0A🛍️ পণ্য: ${product}%0A🔢 পরিমাণ: ${qty}%0A👤 নাম: ${name}%0A📱 মোবাইল: ${phone}%0A📍 ঠিকানা: ${address}%0A💳 পেমেন্ট: ${pay}%0A💰 আনুমানিক মূল্য: ৳${selectedPrice}%0A%0Aদয়া করে অর্ডারটি কনফার্ম করুন।`;
+window.open('https://wa.me/8801609484590?text='+msg,'_blank');
+}
+</script>
 </body>
 </html>
