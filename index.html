@@ -3,238 +3,75 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="আয়রা কসমেটিকস — কসমেটিকস ও বিউটি পণ্যের সহজ অনলাইন অর্ডার।">
+<meta name="description" content="আয়রা কসমেটিকস — সৌন্দর্যের যত্নে পছন্দের কসমেটিকস।">
 <title>আয়রা কসমেটিকস | Ayra Cosmetics</title>
 <style>
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:Arial,"Noto Sans Bengali",sans-serif;background:#fff7fa;color:#351d28}
-body.modal-open{overflow:hidden}
-header{background:linear-gradient(135deg,#fff0f5,#f8c5d7);padding:18px 6%;display:flex;align-items:center;justify-content:space-between;gap:20px;position:sticky;top:0;z-index:5;box-shadow:0 2px 12px #0001}
-.logo{font-weight:800;font-size:25px;color:#a8174e}.nav a{margin-left:18px;color:#5c263a;text-decoration:none;font-weight:700}
-.hero{padding:65px 6%;text-align:center;background:radial-gradient(circle at top,#fff,#ffe3ed)}
-.hero img{width:min(180px,45vw);filter:drop-shadow(0 8px 16px #8d275533)}
-.hero h1{font-size:42px;margin:15px 0 8px;color:#a8174e}.hero p{font-size:18px;margin:8px auto 22px;max-width:650px}
-.btn{display:inline-block;border:0;background:#b71955;color:#fff;padding:13px 24px;border-radius:30px;text-decoration:none;font-weight:700;cursor:pointer;transition:.2s}
-.btn:hover{transform:translateY(-1px);box-shadow:0 8px 18px #b7195533}
-.section{padding:45px 6%;max-width:1150px;margin:auto}.section h2{text-align:center;color:#a8174e;font-size:30px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
-.card{background:white;border-radius:18px;padding:22px;box-shadow:0 5px 20px #5d17301a;border:1px solid #f4d6e1;text-align:center}
-.icon{font-size:48px}.price{font-size:21px;font-weight:800;color:#b71955;margin:10px}
-.order{display:inline-block;background:#25a95a;color:white;padding:9px 16px;border-radius:20px;text-decoration:none;font-weight:700;border:0;cursor:pointer}
-.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:15px}.feature{padding:20px;background:#fff;border-radius:16px;text-align:center;border:1px solid #f1d5df}
-footer{background:#351d28;color:#fff;padding:35px 6%;text-align:center}.small{opacity:.85;font-size:14px}
-.modal{position:fixed;inset:0;background:#24101799;display:none;align-items:center;justify-content:center;padding:16px;z-index:20}
-.modal.show{display:flex}
-.modal-box{width:min(650px,100%);max-height:92vh;overflow:auto;background:#fff;border-radius:24px;box-shadow:0 20px 70px #0005;position:relative}
-.modal-head{padding:22px 24px;background:linear-gradient(135deg,#fff0f5,#f8c5d7);border-bottom:1px solid #f1ccd9}
-.modal-head h2{margin:0;color:#a8174e}.modal-head p{margin:6px 0 0;font-size:14px}
-.close{position:absolute;right:16px;top:14px;width:38px;height:38px;border:0;border-radius:50%;background:#fff;color:#7a2847;font-size:25px;cursor:pointer}
-.form{padding:22px 24px}
-label{display:block;font-weight:700;margin:13px 0 7px}
-input,select,textarea{width:100%;padding:12px 13px;border:1px solid #e6c8d4;border-radius:12px;background:#fff;font:inherit;color:#351d28;outline:none}
-input:focus,select:focus,textarea:focus{border-color:#b71955;box-shadow:0 0 0 3px #b7195512}
-textarea{min-height:85px;resize:vertical}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.payments{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.payments label{margin:0;padding:11px;border:1px solid #ead0da;border-radius:12px;font-weight:600;cursor:pointer;background:#fff}
-.payments input{width:auto;margin-right:6px}
-.total{margin:18px 0;padding:15px;border-radius:14px;background:#fff3f7;display:flex;justify-content:space-between;align-items:center;font-size:18px;font-weight:800;color:#8f1242}
-.submit{width:100%;font-size:16px;padding:14px}
-.form-note{font-size:12px;color:#765865;margin-top:10px;line-height:1.5}
-.success{display:none;padding:42px 24px;text-align:center}
-.success.show{display:block}
-.success .check{font-size:58px}.success h3{color:#a8174e;font-size:25px;margin:10px 0}
-.hidden-field{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-@media(max-width:650px){.nav{display:none}.hero h1{font-size:34px}.row{grid-template-columns:1fr}.payments{grid-template-columns:1fr}.modal-box{border-radius:18px}.form{padding:18px}.modal-head{padding:19px 18px}}
+:root{--pink:#b71955;--pink2:#f7a9c5;--soft:#fff7fa;--ink:#351d28;--gold:#c7952e;--green:#25a95a;--line:#f0d4df}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,"Noto Sans Bengali",sans-serif;background:var(--soft);color:var(--ink);line-height:1.6}button,input,select,textarea{font:inherit}header{background:rgba(255,247,250,.96);backdrop-filter:blur(10px);padding:12px 6%;display:flex;align-items:center;justify-content:space-between;gap:18px;position:sticky;top:0;z-index:20;box-shadow:0 2px 16px #00000010;border-bottom:1px solid #f2dbe4}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}.brand img{width:54px;height:54px}.brand strong{font-size:21px;color:var(--pink)}.brand small{display:block;font-size:11px;letter-spacing:2px;color:#8d5269}.nav a{margin-left:18px;color:#5c263a;text-decoration:none;font-weight:700}.hero{padding:65px 6%;text-align:center;background:radial-gradient(circle at top,#fff 0,#ffe3ed 72%,#ffd2e1 100%)}.hero img{width:min(180px,45vw);filter:drop-shadow(0 10px 20px #8d275533)}.hero h1{font-size:clamp(32px,6vw,48px);margin:12px 0 6px;color:var(--pink)}.hero p{font-size:18px;margin:8px auto 22px;max-width:680px}.btn,.order{border:0;cursor:pointer;display:inline-block;color:#fff;font-weight:700;text-decoration:none;border-radius:30px;transition:.2s}.btn{background:var(--pink);padding:13px 24px}.btn:hover,.order:hover{transform:translateY(-1px);filter:brightness(.96)}.section{padding:45px 6%;max-width:1150px;margin:auto}.section h2{text-align:center;color:var(--pink);font-size:30px;margin-top:0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}.card{background:#fff;border-radius:18px;padding:22px;box-shadow:0 5px 20px #5d17301a;border:1px solid var(--line);text-align:center}.icon{font-size:48px}.price{font-size:21px;font-weight:800;color:var(--pink);margin:10px}.order{background:var(--green);padding:9px 16px}.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:15px}.feature{padding:20px;background:#fff;border-radius:16px;text-align:center;border:1px solid var(--line)}footer{background:var(--ink);color:#fff;padding:35px 6%;text-align:center}.small{opacity:.85;font-size:14px}
+.modal{display:none;position:fixed;inset:0;background:#180b1099;z-index:50;padding:18px;overflow:auto;align-items:center;justify-content:center}.modal.show{display:flex}.modal-box{background:#fff;width:min(620px,100%);border-radius:24px;box-shadow:0 25px 70px #0005;overflow:hidden}.modal-head{background:linear-gradient(135deg,#fff0f5,#f8c5d7);padding:18px 22px;display:flex;align-items:center;justify-content:space-between}.modal-head h2{margin:0;color:var(--pink);font-size:24px}.close{border:0;background:#fff;border-radius:50%;width:38px;height:38px;font-size:22px;cursor:pointer}.form{padding:22px}.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{margin-bottom:14px}.field label{display:block;font-weight:700;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;padding:12px 13px;border:1px solid #e8cbd6;border-radius:12px;outline:none;background:#fff}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--pink);box-shadow:0 0 0 3px #b7195515}.field textarea{min-height:88px;resize:vertical}.pay{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.pay label{border:1px solid #e8cbd6;padding:10px;border-radius:12px;cursor:pointer}.pay input{width:auto}.total{background:#fff7fa;border:1px solid var(--line);padding:13px;border-radius:12px;display:flex;justify-content:space-between;align-items:center;margin:8px 0 16px;font-size:20px;font-weight:800;color:var(--pink)}.submit{width:100%;padding:14px;background:var(--pink);color:#fff;border:0;border-radius:14px;font-weight:800;cursor:pointer;font-size:16px}.submit:disabled{opacity:.65;cursor:wait}.success{display:none;text-align:center;padding:38px 24px}.success.show{display:block}.success .check{font-size:58px}.success h3{color:var(--green);font-size:25px;margin:8px 0}.note{font-size:13px;color:#765563;margin-top:8px}.error{display:none;background:#fff0f0;color:#a33;padding:10px;border-radius:10px;margin-bottom:12px}.error.show{display:block}@media(max-width:700px){header{padding:10px 4%}.brand strong{font-size:18px}.brand img{width:46px;height:46px}.nav{display:none}.hero{padding:45px 5%}.section{padding:38px 5%}.row{grid-template-columns:1fr}.pay{grid-template-columns:1fr}.modal{padding:10px}.form{padding:18px}}
 </style>
 </head>
 <body>
 <header>
-<div class="logo">🌸 আয়রা কসমেটিকস</div>
+<a class="brand" href="#top"><img src="logo.svg" alt="Ayra Cosmetics logo"><span><strong>আয়রা কসমেটিকস</strong><small>AYRA COSMETICS</small></span></a>
 <nav class="nav"><a href="#products">পণ্য</a><a href="#about">আমাদের সম্পর্কে</a><a href="#contact">যোগাযোগ</a></nav>
 </header>
-
+<main id="top">
 <section class="hero">
-<img src="logo.png" alt="আয়রা কসমেটিকস লোগো">
+<img src="logo.svg" alt="আয়রা কসমেটিকস লোগো">
 <h1>আয়রা কসমেটিকস</h1>
-<p>আপনার সৌন্দর্যের যত্নে পছন্দের কসমেটিকস—একসাথে সহজে ও বিশ্বস্ততার সাথে।</p>
-<button class="btn" type="button" onclick="openOrder('')">🛍️ এখনই অর্ডার করুন</button>
+<p>আপনার সৌন্দর্যের যত্নে পছন্দের কসমেটিকস—সহজ অর্ডার, সুন্দর সেবা ও বিশ্বস্ততার সাথে।</p>
+<a class="btn" href="tel:01609484590">📞 এখনই যোগাযোগ করুন</a>
 </section>
-
 <section class="section" id="products">
 <h2>✨ আমাদের জনপ্রিয় পণ্য</h2>
 <div class="grid">
-<div class="card"><div class="icon">🫧</div><h3>ফেসওয়াশ</h3><p>দৈনন্দিন স্কিন কেয়ারের জন্য বিভিন্ন ধরনের ফেসওয়াশ।</p><div class="price">৳ 250–650</div><button class="order" type="button" onclick="openOrder('ফেসওয়াশ')">অর্ডার করুন</button></div>
-<div class="card"><div class="icon">🧴</div><h3>ক্রিম</h3><p>ময়েশ্চারাইজার ও বিভিন্ন বিউটি ক্রিমের কালেকশন।</p><div class="price">৳ 300–900</div><button class="order" type="button" onclick="openOrder('ক্রিম')">অর্ডার করুন</button></div>
-<div class="card"><div class="icon">💄</div><h3>লিপস্টিক</h3><p>বিভিন্ন শেডের লিপস্টিক ও লিপ কালার।</p><div class="price">৳ 180–750</div><button class="order" type="button" onclick="openOrder('লিপস্টিক')">অর্ডার করুন</button></div>
-<div class="card"><div class="icon">🎁</div><h3>মেকআপ বক্স</h3><p>প্রয়োজনীয় মেকআপ আইটেমের সুন্দর কম্বো সেট।</p><div class="price">৳ 700–2,500</div><button class="order" type="button" onclick="openOrder('মেকআপ বক্স')">অর্ডার করুন</button></div>
-<div class="card"><div class="icon">🌸</div><h3>পারফিউম</h3><p>বিভিন্ন সুগন্ধির কালেকশন।</p><div class="price">৳ 450–1,500</div><button class="order" type="button" onclick="openOrder('পারফিউম')">অর্ডার করুন</button></div>
-<div class="card"><div class="icon">🪞</div><h3>অন্যান্য আইটেম</h3><p>বিউটি ও পার্সোনাল কেয়ারের আরও নানা পণ্য।</p><div class="price">৳ 100–1,200</div><button class="order" type="button" onclick="openOrder('অন্যান্য আইটেম')">অর্ডার করুন</button></div>
+<div class="card"><div class="icon">🫧</div><h3>ফেসওয়াশ</h3><p>দৈনন্দিন স্কিন কেয়ারের জন্য বিভিন্ন ধরনের ফেসওয়াশ।</p><div class="price">৳ 650</div><button class="order" data-product="ফেসওয়াশ" data-price="650">অর্ডার করুন</button></div>
+<div class="card"><div class="icon">🧴</div><h3>ক্রিম</h3><p>ময়েশ্চারাইজার ও বিভিন্ন বিউটি ক্রিমের কালেকশন।</p><div class="price">৳ 450</div><button class="order" data-product="ক্রিম" data-price="450">অর্ডার করুন</button></div>
+<div class="card"><div class="icon">💄</div><h3>লিপস্টিক</h3><p>বিভিন্ন শেডের লিপস্টিক ও লিপ কালার।</p><div class="price">৳ 350</div><button class="order" data-product="লিপস্টিক" data-price="350">অর্ডার করুন</button></div>
+<div class="card"><div class="icon">🎁</div><h3>মেকআপ বক্স</h3><p>প্রয়োজনীয় মেকআপ আইটেমের সুন্দর কম্বো সেট।</p><div class="price">৳ 1,300</div><button class="order" data-product="মেকআপ বক্স" data-price="1300">অর্ডার করুন</button></div>
+<div class="card"><div class="icon">🌸</div><h3>পারফিউম</h3><p>বিভিন্ন সুগন্ধির সুন্দর কালেকশন।</p><div class="price">৳ 750</div><button class="order" data-product="পারফিউম" data-price="750">অর্ডার করুন</button></div>
+<div class="card"><div class="icon">🪞</div><h3>অন্যান্য আইটেম</h3><p>বিউটি ও পার্সোনাল কেয়ারের আরও নানা পণ্য।</p><div class="price">৳ 500</div><button class="order" data-product="অন্যান্য আইটেম" data-price="500">অর্ডার করুন</button></div>
 </div>
-<p class="small" style="text-align:center;margin-top:22px">* উপরের দামগুলো নমুনা/আনুমানিক। অর্ডারের আগে সঠিক পণ্যের দাম নিশ্চিত করা হবে।</p>
+<p class="small" style="text-align:center;margin-top:22px">* ওয়েবসাইটে দেখানো দামগুলো নমুনা। প্রয়োজন হলে কোডের product list থেকে দাম পরিবর্তন করতে পারবেন।</p>
 </section>
+<section class="section" id="about"><h2>💖 কেন আয়রা কসমেটিকস?</h2><div class="features"><div class="feature">🌿<h3>ভালো মান</h3><p>পণ্যের মানকে গুরুত্ব দিয়ে নির্বাচন।</p></div><div class="feature">🤝<h3>বিশ্বস্ত সেবা</h3><p>গ্রাহকের সন্তুষ্টিকে অগ্রাধিকার।</p></div><div class="feature">🚚<h3>সহজ অর্ডার</h3><p>ওয়েবসাইট থেকেই অর্ডার করার সুবিধা।</p></div><div class="feature">💝<h3>বিউটি কালেকশন</h3><p>দৈনন্দিন প্রয়োজনের বিভিন্ন কসমেটিকস।</p></div></div></section>
+<section class="section" id="contact"><h2>📍 যোগাযোগ</h2><div class="card"><h3>আয়রা কসমেটিকস</h3><p>📞 <a href="tel:01609484590">01609484590</a></p><p>📍 ধর্মপুর চৌমনী, আদর্শ সদর, কুমিল্লা</p><a class="btn" href="tel:01609484590">কল করুন</a></div></section>
+</main>
+<footer><strong>আয়রা কসমেটিকস</strong><p>Be Beautiful, Be You 💗</p><p class="small">ধর্মপুর চৌমনী, আদর্শ সদর, কুমিল্লা | 01609484590</p></footer>
 
-<section class="section" id="about">
-<h2>💖 কেন আয়রা কসমেটিকস?</h2>
-<div class="features">
-<div class="feature">🌿<h3>ভালো মান</h3><p>পণ্যের মানকে গুরুত্ব দিয়ে নির্বাচন।</p></div>
-<div class="feature">🤝<h3>বিশ্বস্ত সেবা</h3><p>গ্রাহকের সন্তুষ্টিকে অগ্রাধিকার।</p></div>
-<div class="feature">🚚<h3>সহজ অর্ডার</h3><p>ওয়েবসাইট থেকেই সহজে অর্ডার দিতে পারবেন।</p></div>
-<div class="feature">💝<h3>বিউটি কালেকশন</h3><p>দৈনন্দিন প্রয়োজনের বিভিন্ন কসমেটিকস।</p></div>
-</div>
-</section>
-
-<section class="section" id="contact">
-<h2>📍 যোগাযোগ</h2>
-<div class="card">
-<h3>আয়রা কসমেটিকস</h3>
-<p>📞 <a href="tel:01609484590">01609484590</a></p>
-<p>📍 ধর্মপুর চৌমনী, আদর্শ সদর, কুমিল্লা</p>
-<a class="btn" href="tel:01609484590">কল করুন</a>
-</div>
-</section>
-
-<footer>
-<strong>আয়রা কসমেটিকস</strong>
-<p>Be Beautiful, Be You 💗</p>
-<p class="small">ধর্মপুর চৌমনী, আদর্শ সদর, কুমিল্লা | 01609484590</p>
-</footer>
-
-<!-- Order Modal -->
-<div class="modal" id="orderModal" role="dialog" aria-modal="true" aria-labelledby="orderTitle" onclick="backdropClose(event)">
+<div class="modal" id="orderModal" aria-hidden="true">
 <div class="modal-box">
-<button class="close" type="button" aria-label="বন্ধ করুন" onclick="closeOrder()">×</button>
-<div class="modal-head">
-<h2 id="orderTitle">🛍️ অর্ডার করুন</h2>
-<p>আপনার তথ্য দিন—অর্ডারটি আপনার দোকানের কাছে জমা হবে।</p>
-</div>
-
-<form class="form" id="orderForm" action="https://formspree.io/f/meaq1nna" method="POST">
-<input type="hidden" name="_subject" value="Ayra Cosmetics - নতুন অর্ডার">
-<input type="hidden" name="_language" value="bn">
+<div class="modal-head"><h2>🛍️ অর্ডার করুন</h2><button class="close" type="button" aria-label="বন্ধ করুন">×</button></div>
+<div class="form" id="formWrap">
+<div class="error" id="errorBox"></div>
+<form id="orderForm" action="https://formspree.io/f/meaq1nna" method="POST" accept-charset="UTF-8">
+<input type="hidden" name="_subject" value="Ayra Cosmetics - New Order">
 <input type="hidden" name="order_total" id="hiddenTotal">
-<div class="hidden-field"><label>Website <input name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
-
-<label for="product">🛒 পণ্য</label>
-<select id="product" name="product" required onchange="updateTotal()">
-<option value="">পণ্য নির্বাচন করুন</option>
-<option value="ফেসওয়াশ" data-price="650">ফেসওয়াশ — ৳650 (নমুনা)</option>
-<option value="ক্রিম" data-price="900">ক্রিম — ৳900 (নমুনা)</option>
-<option value="লিপস্টিক" data-price="750">লিপস্টিক — ৳750 (নমুনা)</option>
-<option value="মেকআপ বক্স" data-price="2500">মেকআপ বক্স — ৳2,500 (নমুনা)</option>
-<option value="পারফিউম" data-price="1500">পারফিউম — ৳1,500 (নমুনা)</option>
-<option value="অন্যান্য আইটেম" data-price="1200">অন্যান্য আইটেম — ৳1,200 (নমুনা)</option>
-</select>
-
-<div class="row">
-<div><label for="quantity">🔢 পরিমাণ</label><input id="quantity" name="quantity" type="number" min="1" max="50" value="1" required oninput="updateTotal()"></div>
-<div><label for="name">👤 আপনার নাম</label><input id="name" name="customer_name" type="text" autocomplete="name" placeholder="আপনার নাম" required></div>
-</div>
-
-<div class="row">
-<div><label for="phone">📱 মোবাইল নম্বর</label><input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="01XXXXXXXXX" pattern="01[0-9]{9}" title="সঠিক ১১ সংখ্যার মোবাইল নম্বর দিন" required></div>
-<div><label for="email">📧 ইমেইল <span class="small">(ঐচ্ছিক)</span></label><input id="email" name="email" type="email" autocomplete="email" placeholder="example@email.com"></div>
-</div>
-
-<label for="address">🏠 সম্পূর্ণ ঠিকানা</label>
-<textarea id="address" name="address" autocomplete="street-address" placeholder="বাড়ি/গ্রাম, ইউনিয়ন, উপজেলা, জেলা" required></textarea>
-
-<label>💳 পেমেন্ট পদ্ধতি</label>
-<div class="payments">
-<label><input type="radio" name="payment_method" value="bKash" required> bKash</label>
-<label><input type="radio" name="payment_method" value="Nagad"> Nagad</label>
-<label><input type="radio" name="payment_method" value="Rocket"> Rocket</label>
-<label><input type="radio" name="payment_method" value="Cash on Delivery"> Cash on Delivery</label>
-</div>
-
-<label for="transaction">💸 Transaction ID <span class="small">(অনলাইন পেমেন্ট হলে)</span></label>
-<input id="transaction" name="transaction_id" type="text" placeholder="প্রযোজ্য হলে দিন">
-
-<div class="total"><span>মোট মূল্য</span><span id="totalText">৳ 0</span></div>
-<input type="hidden" name="total_price" id="totalPrice">
-<button class="btn submit" type="submit">✅ অর্ডার কনফার্ম করুন</button>
-<p class="form-note">* পণ্যের দাম এখানে নমুনা হিসেবে দেওয়া হয়েছে। আপনার আসল পণ্যের দাম অনুযায়ী নিচের JavaScript-এর price পরিবর্তন করুন।</p>
+<div class="row"><div class="field"><label for="product">🛒 পণ্য</label><select id="product" name="product" required></select></div><div class="field"><label for="quantity">🔢 পরিমাণ</label><input id="quantity" name="quantity" type="number" min="1" value="1" required></div></div>
+<div class="row"><div class="field"><label for="name">👤 আপনার নাম</label><input id="name" name="customer_name" required placeholder="আপনার নাম লিখুন"></div><div class="field"><label for="phone">📱 মোবাইল নম্বর</label><input id="phone" name="phone" type="tel" inputmode="tel" required placeholder="01XXXXXXXXX"></div></div>
+<div class="field"><label for="address">🏠 সম্পূর্ণ ঠিকানা</label><textarea id="address" name="address" required placeholder="গ্রাম/বাসা, ডাকঘর, উপজেলা, জেলা"></textarea></div>
+<div class="field"><label>💳 পেমেন্ট পদ্ধতি</label><div class="pay"><label><input type="radio" name="payment_method" value="bKash" required> bKash</label><label><input type="radio" name="payment_method" value="Nagad"> Nagad</label><label><input type="radio" name="payment_method" value="Rocket"> Rocket</label><label><input type="radio" name="payment_method" value="Cash on Delivery"> Cash on Delivery</label></div></div>
+<div class="field"><label for="trx">ট্রানজেকশন ID (অনলাইন পেমেন্ট হলে)</label><input id="trx" name="transaction_id" placeholder="প্রযোজ্য হলে লিখুন"></div>
+<div class="total"><span>💰 মোট মূল্য</span><span id="totalPrice">৳ 650</span></div>
+<button class="submit" id="submitBtn" type="submit">✅ অর্ডার কনফার্ম করুন</button>
+<p class="note">অর্ডার পাঠালে আপনার তথ্য নিরাপদভাবে Formspree-তে জমা হবে এবং এই Form-এর সাথে যুক্ত ইমেইলে notification যাবে।</p>
 </form>
-
-<div class="success" id="successBox">
-<div class="check">✅</div>
-<h3>অর্ডার সফলভাবে গ্রহণ করা হয়েছে!</h3>
-<p>আপনার অর্ডারের তথ্য আমরা পেয়েছি। প্রয়োজনে আপনার দেওয়া নম্বরে যোগাযোগ করা হবে।</p>
-<button class="btn" type="button" onclick="closeOrder()">ঠিক আছে</button>
+</div>
+<div class="success" id="successBox"><div class="check">🎉</div><h3>অর্ডার সফলভাবে গ্রহণ করা হয়েছে!</h3><p>আপনার অর্ডারের তথ্য আমরা পেয়েছি। প্রয়োজনে আপনার দেওয়া নম্বরে যোগাযোগ করা হবে।</p><button class="btn" type="button" id="doneBtn">ঠিক আছে</button></div>
 </div>
 </div>
-</div>
-
 <script>
-const modal=document.getElementById('orderModal');
-const form=document.getElementById('orderForm');
-const successBox=document.getElementById('successBox');
-const product=document.getElementById('product');
-const quantity=document.getElementById('quantity');
-
-function openOrder(productName){
-  modal.classList.add('show');
-  document.body.classList.add('modal-open');
-  form.style.display='block';
-  successBox.classList.remove('show');
-  if(productName){
-    product.value=productName;
-    updateTotal();
-  }
-  setTimeout(()=>product.focus(),100);
-}
-function closeOrder(){
-  modal.classList.remove('show');
-  document.body.classList.remove('modal-open');
-}
-function backdropClose(e){if(e.target===modal)closeOrder()}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeOrder()});
-
-function updateTotal(){
-  const option=product.options[product.selectedIndex];
-  const price=option && option.dataset.price ? Number(option.dataset.price) : 0;
-  const qty=Math.max(1,Number(quantity.value)||1);
-  const total=price*qty;
-  document.getElementById('totalText').textContent='৳ '+total.toLocaleString('bn-BD');
-  document.getElementById('totalPrice').value=total;
-  document.getElementById('hiddenTotal').value='৳ '+total.toLocaleString('bn-BD');
-}
-
-form.addEventListener('submit',async function(e){
-  e.preventDefault();
-  const submitBtn=form.querySelector('.submit');
-  if(!form.checkValidity()){form.reportValidity();return}
-  if(form.action.includes('YOUR_FORM_ID')){
-    alert('অর্ডার ফর্ম চালু করতে Formspree-এর আপনার Form ID বসাতে হবে। README ফাইলের নির্দেশনা দেখুন।');
-    return;
-  }
-  submitBtn.disabled=true;
-  submitBtn.textContent='⏳ অর্ডার পাঠানো হচ্ছে...';
-  try{
-    const response=await fetch(form.action,{
-      method:'POST',
-      body:new FormData(form),
-      headers:{'Accept':'application/json'}
-    });
-    if(response.ok){
-      form.reset();
-      updateTotal();
-      form.style.display='none';
-      successBox.classList.add('show');
-    }else{
-      let data={}; try{data=await response.json()}catch(_){}
-      alert(data.errors?.map(x=>x.message).join('\\n') || 'অর্ডার পাঠানো যায়নি। একটু পরে আবার চেষ্টা করুন।');
-    }
-  }catch(err){
-    alert('ইন্টারনেট সংযোগ বা সার্ভার সমস্যার কারণে অর্ডার পাঠানো যায়নি।');
-  }finally{
-    submitBtn.disabled=false;
-    submitBtn.textContent='✅ অর্ডার কনফার্ম করুন';
-  }
-}
-);
-updateTotal();
+const FORMSPREE_ENDPOINT='https://formspree.io/f/meaq1nna';
+const products=[{name:'ফেসওয়াশ',price:650},{name:'ক্রিম',price:450},{name:'লিপস্টিক',price:350},{name:'মেকআপ বক্স',price:1300},{name:'পারফিউম',price:750},{name:'অন্যান্য আইটেম',price:500}];
+const modal=document.getElementById('orderModal'), form=document.getElementById('orderForm'), product=document.getElementById('product'), quantity=document.getElementById('quantity'), totalPrice=document.getElementById('totalPrice'), hiddenTotal=document.getElementById('hiddenTotal'), submitBtn=document.getElementById('submitBtn'), errorBox=document.getElementById('errorBox'), formWrap=document.getElementById('formWrap'), successBox=document.getElementById('successBox');
+products.forEach((p,i)=>{const o=document.createElement('option');o.value=p.name;o.textContent=`${p.name} — ৳ ${p.price}`;o.dataset.price=p.price;product.appendChild(o)});
+function updateTotal(){const p=products[product.selectedIndex]||products[0], q=Math.max(1,Number(quantity.value)||1), total=p.price*q;totalPrice.textContent=`৳ ${total.toLocaleString('bn-BD')}`;hiddenTotal.value=`৳ ${total}`}
+function openModal(selected){if(selected){const idx=products.findIndex(p=>p.name===selected);if(idx>=0)product.selectedIndex=idx}quantity.value=1;updateTotal();modal.classList.add('show');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}
+function closeModal(){modal.classList.remove('show');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';formWrap.style.display='block';successBox.classList.remove('show');errorBox.classList.remove('show');form.reset();product.selectedIndex=0;quantity.value=1;updateTotal()}
+document.querySelectorAll('.order').forEach(btn=>btn.addEventListener('click',()=>openModal(btn.dataset.product)));
+document.querySelector('.close').addEventListener('click',closeModal);document.getElementById('doneBtn').addEventListener('click',closeModal);modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});product.addEventListener('change',updateTotal);quantity.addEventListener('input',updateTotal);updateTotal();
+form.addEventListener('submit',async e=>{e.preventDefault();errorBox.classList.remove('show');submitBtn.disabled=true;submitBtn.textContent='⏳ অর্ডার পাঠানো হচ্ছে...';try{const data=new FormData(form);const response=await fetch(FORMSPREE_ENDPOINT,{method:'POST',body:data,headers:{Accept:'application/json'}});const text=await response.text();let result={};try{result=JSON.parse(text)}catch(_){}if(response.ok){formWrap.style.display='none';successBox.classList.add('show')}else{const msg=result.errors?.map(x=>x.message).join(', ')||result.error||('Formspree response: '+response.status);throw new Error(msg)}}catch(err){errorBox.textContent=(err&&err.message)?err.message:'অর্ডার পাঠানো যায়নি। ইন্টারনেট সংযোগ পরীক্ষা করে আবার চেষ্টা করুন।';errorBox.classList.add('show')}finally{submitBtn.disabled=false;submitBtn.textContent='✅ অর্ডার কনফার্ম করুন'}});
 </script>
 </body>
 </html>
