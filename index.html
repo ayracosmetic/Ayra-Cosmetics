@@ -87,8 +87,8 @@ footer{background:#351d28;color:#fff;padding:35px 6%;text-align:center}.small{op
     <button class="close" type="button" aria-label="Close" onclick="closeOrder()">×</button>
     <div id="orderFormWrap">
       <h2>🛍️ অর্ডার করুন</h2>
-      <p class="modal-sub">আপনার তথ্য দিন—আমরা অর্ডারটি গ্রহণ করে যোগাযোগ করব।</p>
-      <form id="orderForm" action="https://formspree.io/f/meaq1nna" method="POST">
+      <p class="modal-sub">আপনার তথ্য দিন—অর্ডারটি সরাসরি WhatsApp-এ পাঠানো হবে।</p>
+      <form id="orderForm">
         <div class="form-grid">
           <div class="field">
             <label for="product">🛒 পণ্য</label>
@@ -132,7 +132,7 @@ footer{background:#351d28;color:#fff;padding:35px 6%;text-align:center}.small{op
         <input type="hidden" id="orderSummary" name="অর্ডার সারাংশ">
         <input type="hidden" name="_subject" value="Ayra Cosmetics - New Order">
         <button class="submit" id="submitBtn" type="submit">✅ অর্ডার কনফার্ম করুন</button>
-        <div class="error" id="formError" data-fs-error>অর্ডার পাঠানো যায়নি। একটু পরে আবার চেষ্টা করুন।</div>
+        <div class="error" id="formError" data-fs-error>WhatsApp খুলতে সমস্যা হলে আবার চেষ্টা করুন।</div>
       </form>
     </div>
     <div class="success" id="successBox">
@@ -155,53 +155,61 @@ const submitBtn=document.getElementById('submitBtn');
 
 function openOrder(e){
   if(e)e.preventDefault();
-  modal.classList.add('show'); modal.setAttribute('aria-hidden','false');
+  modal.classList.add('show');
+  modal.setAttribute('aria-hidden','false');
   document.body.style.overflow='hidden';
 }
 function closeOrder(){
-  modal.classList.remove('show'); modal.setAttribute('aria-hidden','true');
+  modal.classList.remove('show');
+  modal.setAttribute('aria-hidden','true');
   document.body.style.overflow='';
 }
 modal.addEventListener('click',e=>{if(e.target===modal)closeOrder();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeOrder();});
 
-// Formspree handles the actual submission and shows real validation/server errors.
-window.formspree = window.formspree || function () {
-  (formspree.q = formspree.q || []).push(arguments);
-};
-formspree('initForm', {
-  formElement: '#orderForm',
-  formId: 'meaq1nna',
-  onSubmit: () => {
-    errorBox.classList.remove('show');
-    submitBtn.disabled = true;
-    submitBtn.textContent = '⏳ অর্ডার পাঠানো হচ্ছে...';
-    const p = product.value, q = qty.value;
-    summary.value = `পণ্য: ${p}; পরিমাণ: ${q}`;
-  },
-  onSuccess: () => {
-    form.reset();
-    qty.value = 1;
-    submitBtn.disabled = false;
-    submitBtn.textContent = '✅ অর্ডার কনফার্ম করুন';
-    document.getElementById('orderFormWrap').style.display='none';
-    document.getElementById('successBox').classList.add('show');
-  },
-  onError: (context, error) => {
-    submitBtn.disabled = false;
-    submitBtn.textContent = '✅ অর্ডার কনফার্ম করুন';
-    errorBox.classList.add('show');
-    if (error && error.message) errorBox.textContent = '⚠️ ' + error.message;
-  },
-  onFailure: (context, error) => {
-    submitBtn.disabled = false;
-    submitBtn.textContent = '✅ অর্ডার কনফার্ম করুন';
-    errorBox.classList.add('show');
-    errorBox.textContent = '⚠️ অর্ডার পাঠানো যায়নি। Formspree-তে email verification/ফর্ম সেটিংস পরীক্ষা করুন।';
+// Use a normal HTML POST to Formspree, targeted at a hidden iframe.
+// This avoids fetch/CORS and external AJAX-library issues on GitHub Pages.
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+
+  if(!form.checkValidity()){
+    form.reportValidity();
+    return;
   }
+
+  const p = product.value || 'নির্দিষ্ট করা হয়নি';
+  const q = qty.value || '1';
+  const name = (form.querySelector('[name="name"]') || {}).value || '';
+  const phone = (form.querySelector('[name="phone"]') || {}).value || '';
+  const address = (form.querySelector('[name="address"]') || {}).value || '';
+  const payment = (form.querySelector('input[name="payment"]:checked') || {}).value || 'নির্দিষ্ট করা হয়নি';
+  const note = (form.querySelector('[name="note"]') || {}).value || 'কোনো অতিরিক্ত তথ্য নেই';
+
+  const message =
+`🛍️ *Ayra Cosmetics – নতুন অর্ডার*
+
+🛒 *পণ্য:* ${p}
+🔢 *Quantity:* ${q}
+👤 *নাম:* ${name}
+📱 *মোবাইল:* ${phone}
+🏠 *সম্পূর্ণ ঠিকানা:* ${address}
+💳 *পেমেন্ট পদ্ধতি:* ${payment}
+📝 *অতিরিক্ত তথ্য:* ${note}
+
+✅ অর্ডারটি কনফার্ম করার জন্য WhatsApp-এ পাঠানো হলো।`;
+
+  const whatsappNumber = '8801609484590';
+  const whatsappUrl = 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(message);
+
+  // Open WhatsApp in a new tab/window. On mobile this normally opens the WhatsApp app.
+  window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+
+  // Show a polished success state inside the website.
+  document.getElementById('orderFormWrap').style.display='none';
+  document.getElementById('successBox').classList.add('show');
 });
 
 </script>
-<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+</script>
 </body>
 </html>
